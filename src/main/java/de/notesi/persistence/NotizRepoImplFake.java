@@ -34,7 +34,7 @@ public class NotizRepoImplFake implements NotizRepo {
 
         //Fehlt noch
         throw new UnsupportedOperationException(
-                "Die Funktion 'Notiz bearbeiten' ist noch nicht implementiert."
+                "Die Funktion 'bearbeiteNotiz' ist noch nicht implementiert."
         );
 
     }
