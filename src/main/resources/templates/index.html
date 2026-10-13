@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Notesi - Startseite</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="../../static/css/bootstrap.min.css"
+          rel="stylesheet"
+          th:href="@{/css/bootstrap.min.css}">
+
+    <script src="../../static/js/bootstrap.bundle.min.js"
+            th:src="@{/js/bootstrap.bundle.min.js}">
+    </script>
+</head>
+
+<body>
+
+<div class="container mt-4">
+
+    <h1>Notesi</h1>
+
+    <p>Deine Notizen, einfach organisiert.</p>
+
+    <a th:href="@{/notiz/neu}"
+       class="btn btn-primary">
+        Neue Notiz erstellen
+    </a>
+
+</div>
+
+</body>
+</html>
