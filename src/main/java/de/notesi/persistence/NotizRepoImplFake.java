@@ -13,26 +13,34 @@ public class NotizRepoImplFake implements NotizRepo {
 
     @Override
     public List<Notiz> alleNotizen() {
-        return List.of();
+
+        ArrayList<Notiz> alleNotizen = new ArrayList<>(notizenMap.values());
+        return alleNotizen;
     }
 
     @Override
     public void speichereNotiz(Notiz notiz) {
-
+        notizenMap.put(notiz.getId(), notiz);
     }
 
     @Override
     public Optional<Notiz> findeNotizNachId(UUID id) {
-        return Optional.empty();
+        //Falls Notiz nicht gefunden wird, wird NULL zurückgegeben (Optional.ofNullable)
+        return Optional.ofNullable(notizenMap.get(id));
     }
 
     @Override
     public void bearbeiteNotiz(Notiz notiz) {
 
+        //Fehlt noch
+        throw new UnsupportedOperationException(
+                "Die Funktion 'Notiz bearbeiten' ist noch nicht implementiert."
+        );
+
     }
 
     @Override
     public void loescheNotizNachId(UUID id) {
-
+        notizenMap.remove(id);
     }
 }
