@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Notesi - Notiz löschen</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="../../static/css/bootstrap.min.css"
+          rel="stylesheet"
+          th:href="@{/css/bootstrap.min.css}">
+
+    <script src="../../static/js/bootstrap.bundle.min.js"
+            th:src="@{/js/bootstrap.bundle.min.js}">
+    </script>
+</head>
+
+<body>
+
+<div class="container mt-4">
+
+    <h1 class="mb-4">Notiz löschen</h1>
+
+    <div class="card" th:object="${notiz}">
+        <div class="card-body">
+
+            <h2>
+                <span th:text="*{titel}">Titel</span>
+            </h2>
+
+            <hr>
+
+            <h5>Beschreibung</h5>
+            <p>
+                <span th:text="*{beschreibung}">
+                    Beschreibung der Notiz
+                </span>
+            </p>
+
+            <h5>URL</h5>
+            <p>
+                <a th:if="*{url != null and !url.isEmpty()}"
+                   th:href="@{{link}(link=*{url})}"
+                   th:text="*{url}"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    https://example.com
+                </a>
+            </p>
+
+            <h5>Datum</h5>
+            <p>
+                <span th:text="*{datum}"></span>
+            </p>
+
+            <h5>Uhrzeit</h5>
+            <p>
+                <span th:text="*{uhrzeit}"></span>
+            </p>
+
+            <h5>Dringlichkeit</h5>
+            <p>
+                <span th:text="*{dringlichkeit}"></span>
+            </p>
+
+            <hr>
+
+            <div class="alert alert-warning" role="alert">
+                <strong>Achtung!</strong>
+                Möchtest du diese Notiz wirklich löschen?
+                Diese Aktion kann nicht rückgängig gemacht werden.
+            </div>
+
+            <div class="d-flex gap-2 flex-wrap">
+
+                <!-- Löschen bestätigen -->
+                <form th:action="@{/notiz/loeschen/{id}(id=*{id})}"
+                      method="post">
+                    <button type="submit" class="btn btn-danger">
+                        Ja, endgültig löschen
+                    </button>
+                </form>
+
+                <!-- Löschen abbrechen -->
+                <a class="btn btn-secondary"
+                   th:href="@{/notiz/{id}(id=*{id})}">
+                    Abbruch
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

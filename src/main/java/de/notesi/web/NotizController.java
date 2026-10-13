@@ -63,4 +63,26 @@ public class NotizController {
         return "notiz";
     }
 
+    //Vorhandene Notiz löschen
+    @GetMapping("/notiz/loeschen/{id}")
+    public String loescheNotiz(@PathVariable UUID id, Model model) {
+        Optional<Notiz> notiz = notizService.findeNotizMitId(id);
+
+        //Sollte eine UUID nicht gefunden werden, dann kommt man auf eine Fehlerseite
+        if(notiz.isEmpty()){
+            return "notiznichtvorhanden";
+        }
+
+        model.addAttribute("notiz", notiz.get());
+        return "notizloeschen";
+    }
+
+    @PostMapping("/notiz/loeschen/{id}")
+    public String loescheNotiz(@PathVariable UUID id) {
+
+        notizService.loescheNotizNachId(id);
+
+        return "redirect:/";
+    }
+
 }
