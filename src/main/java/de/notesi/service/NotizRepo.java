@@ -15,7 +15,7 @@ public interface NotizRepo {
     void speichereNotiz(Notiz notiz);
 
     // Eine Notiz anhand ihrer ID finden
-    Optional<Notiz> findeNotizNachId(UUID id);
+    Optional<Notiz> findeNotizMitId(UUID id);
 
     // Eine bestehende Notiz bearbeiten
     void bearbeiteNotiz(Notiz notiz);

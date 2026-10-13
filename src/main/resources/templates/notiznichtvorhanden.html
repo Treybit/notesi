@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Notesi - Notiz nicht vorhanden</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="../../static/css/bootstrap.min.css"
+          rel="stylesheet"
+          th:href="@{/css/bootstrap.min.css}">
+
+    <script src="../../static/js/bootstrap.bundle.min.js"
+            th:src="@{/js/bootstrap.bundle.min.js}">
+    </script>
+</head>
+<body class="container mt-4">
+<h1>Notiz nicht gefunden</h1>
+<p>Die gesuchte Notiz existiert nicht oder wurde gelöscht.</p>
+
+<a th:href="@{/}">Zur Startseite</a>
+</body>
+</html>

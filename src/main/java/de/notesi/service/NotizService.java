@@ -27,9 +27,9 @@ public class NotizService {
     }
 
     // Eine Notiz anhand ihrer ID finden
-    public Optional<Notiz> findeNotizNachId(UUID id) {
+    public Optional<Notiz> findeNotizMitId(UUID id) {
 
-        return notizRepo.findeNotizNachId(id);
+        return notizRepo.findeNotizMitId(id);
     }
 
     // Eine bestehende Notiz bearbeiten

@@ -71,6 +71,9 @@ public class NotizForm {
 
     //Gehört diese Methode hier rein?????
     public Notiz convertToNotiz() {
+        //URL ist einfach leer, datum ist NULL und uhrzeit ist NULL
+        //Dieses SOUT muss noch weg!!!
+        System.out.println(url + datum + uhrzeit);
         Notiz notiz = new Notiz(titel, beschreibung, url, datum, uhrzeit, dringlichkeit);
         return notiz;
     }

@@ -20,56 +20,52 @@
 
     <h1 class="mb-4">Notiz</h1>
 
-    <div class="card">
+    <div class="card" th:object="${notiz}">
         <div class="card-body">
 
             <h2>
-                Titel
+                <span th:text="*{titel}">Titel</span>
             </h2>
 
             <hr>
 
             <h5>Beschreibung</h5>
             <p>
-                <span>Lorem ipsum dolor sit amet,
-                    consectetur adipisicing elit.
-                    +Alias, architecto cum cumque dolore dolorum harum
-                    illo laboriosam laborum libero,
-                    maiores nesciunt nostrum possimus quod reiciendis sit ut veniam.
-                    Impedit, voluptates!</span>
+                <span th:text="*{beschreibung}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque ducimus nesciunt obcaecati placeat sed! Eligendi provident ratione repellendus vero voluptate? Culpa deleniti excepturi fuga id quod repudiandae sequi sunt velit!</span>
             </p>
 
             <h5>URL</h5>
             <p>
-                <a>
-                    <span>https://tomasprodan.com</span>
-                </a>
+                <!-- Zeigt die URL an, muss ich aber noch überprüfen -->
+                <a th:href="@{{link}(link=*{url})}" th:text="*{url}">https://example.com</a>
             </p>
 
             <h5>Datum</h5>
             <p>
-                <span>20.06.2002</span>
+                <span th:text="*{datum}"></span>
             </p>
 
             <h5>Uhrzeit</h5>
             <p>
-                <span>14:30</span>
+                <span th:text="*{uhrzeit}"></span>
             </p>
 
             <h5>Dringlichkeit</h5>
             <p>
-                <span>NORMAL</span>
+                <span th:text="*{dringlichkeit}"></span>
             </p>
 
             <hr>
 
             <div class="d-flex gap-2 flex-wrap">
 
-                <a class="btn btn-primary">
+                <!-- Ausgeblendeter Button -->
+                <a class="btn btn-primary d-none">
                     Bearbeiten
                 </a>
 
-                <a class="btn btn-danger">
+                <!-- Ausgeblendeter Button -->
+                <a class="btn btn-danger d-none">
                     Löschen
                 </a>
 
