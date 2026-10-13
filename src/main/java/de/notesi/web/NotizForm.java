@@ -1,9 +1,11 @@
 package de.notesi.web;
 
 import de.notesi.domain.Dringlichkeit;
+import de.notesi.domain.Notiz;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.UUID;
 
 public class NotizForm {
 
@@ -65,5 +67,11 @@ public class NotizForm {
 
     public void setDringlichkeit(Dringlichkeit dringlichkeit) {
         this.dringlichkeit = dringlichkeit;
+    }
+
+    //Gehört diese Methode hier rein?????
+    public Notiz convertToNotiz() {
+        Notiz notiz = new Notiz(titel, beschreibung, url, datum, uhrzeit, dringlichkeit);
+        return notiz;
     }
 }

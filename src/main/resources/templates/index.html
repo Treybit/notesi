@@ -27,6 +27,29 @@
         Neue Notiz erstellen
     </a>
 
+    <!-- Der Abschnitt ist ein Test-->
+    <section class="mt-5">
+        <ul class="list-group">
+
+            <li class="list-group-item list-group-item-action"
+                th:each="eintrag : ${alleNotizen}">
+
+                <a th:href="@{/notiz/{id}(id=${eintrag.id})}"
+                   th:text="${eintrag.titel}">
+                    Notiztitel
+                </a>
+
+                <br>
+
+                <span th:text="${eintrag.beschreibung}">
+                Beschreibung der Notiz
+                </span>
+
+            </li>
+
+        </ul>
+    </section>
+
 </div>
 
 </body>
