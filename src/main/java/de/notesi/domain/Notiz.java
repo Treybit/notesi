@@ -1,6 +1,9 @@
 package de.notesi.domain;
 
+import org.springframework.cglib.core.Local;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.UUID;
 

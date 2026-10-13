@@ -27,13 +27,141 @@
         Neue Notiz erstellen
     </a>
 
-    <!-- Der Abschnitt ist ein Test-->
+
+    <!--Dashboard-->
     <section class="mt-4">
+
+        <!-- Drei Übersichtskarten -->
+        <div class="row mt-4">
+
+            <!-- Karte 1: Dringende Notizen -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-header bg-danger text-white">
+                        Dringende Notizen
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <thead>
+                            <tr>
+                                <th>Titel</th>
+                                <th>Datum</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr th:each="notiz : ${dringendeNotizen}">
+                                <td>
+                                    <a th:href="@{/notiz/{id}(id=${notiz.id})}"
+                                       th:text="${notiz.titel}">
+                                        Titel
+                                    </a>
+                                </td>
+
+                                <td th:text="${notiz.datum != null
+                            ? #temporals.format(notiz.datum, 'dd.MM.yyyy')
+                            : '-'}">
+                                    Datum
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karte 2: Kommende Notizen -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-header bg-success text-white">
+                        Als Nächstes
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <thead>
+                            <tr>
+                                <th>Titel</th>
+                                <th>Termin</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr th:each="notiz : ${kommendeNotizen}">
+                                <td>
+                                    <a th:href="@{/notiz/{id}(id=${notiz.id})}"
+                                       th:text="${notiz.titel}">
+                                        Titel
+                                    </a>
+                                </td>
+
+                                <td>
+                            <span th:if="${notiz.datum != null}"
+                                  th:text="${#temporals.format(notiz.datum, 'dd.MM.yyyy')}">
+                                Datum
+                            </span>
+
+                                    <span th:if="${notiz.uhrzeit != null}"
+                                          th:text="${#temporals.format(notiz.uhrzeit, 'HH:mm')}">
+                                Uhrzeit
+                            </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karte 3: Vergangene Notizen -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-header bg-warning">
+                        Vergangene Notizen
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <thead>
+                            <tr>
+                                <th>Titel</th>
+                                <th>Datum</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr th:each="notiz : ${vergangeneNotizen}">
+                                <td>
+                                    <a th:href="@{/notiz/{id}(id=${notiz.id})}"
+                                       th:text="${notiz.titel}">
+                                        Titel
+                                    </a>
+                                </td>
+
+                                <td th:text="${#temporals.format(notiz.datum, 'dd.MM.yyyy')}">
+                                    Datum
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Alle Notizen -->
+    <section class="mt-4">
+        <p>Alle Notizen:</p>
         <ul class="list-group">
 
             <li class="list-group-item list-group-item-action"
                 th:each="eintrag : ${alleNotizen}">
 
+                <!-- Titel -->
                 <a th:href="@{/notiz/{id}(id=${eintrag.id})}"
                    th:text="${eintrag.titel}">
                     Notiztitel
@@ -41,16 +169,66 @@
 
                 <br>
 
+                <!-- Beschreibung -->
                 <span th:text="${eintrag.beschreibung}">
                 Beschreibung der Notiz
+            </span>
+
+                <br>
+
+                <!-- URL -->
+                <span th:if="${eintrag.url != null and !eintrag.url.isEmpty()}">
+                URL:
+                <a th:href="${eintrag.url}"
+                   th:text="${eintrag.url}"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Link öffnen
+                </a>
+            </span>
+
+                <br th:if="${eintrag.url != null and !eintrag.url.isEmpty()}">
+
+                <!-- Datum -->
+                <span>
+                Datum:
+                <span th:text="${eintrag.datum != null ? #temporals.format(eintrag.datum, 'dd.MM.yyyy') : 'Kein Datum'}">
+                    13.10.2026
                 </span>
+            </span>
+
+                <br>
+
+                <!-- Uhrzeit -->
+                <span>
+                Uhrzeit:
+                <span th:text="${eintrag.uhrzeit != null ? #temporals.format(eintrag.uhrzeit, 'HH:mm') : 'Keine Uhrzeit'}">
+                    14:30
+                </span>
+            </span>
+
+                <br>
+
+                <!-- Dringlichkeit -->
+                <span>
+                Dringlichkeit:
+                <span th:text="${eintrag.dringlichkeit}">
+                    HOCH
+                </span>
+            </span>
 
             </li>
 
         </ul>
     </section>
 
+
 </div>
+
+
+<footer class="text-center text-muted py-4">
+    Made with 🖤 by Treybit<br>
+</footer>
 
 </body>
 </html>

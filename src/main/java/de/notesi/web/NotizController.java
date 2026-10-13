@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 public class NotizController {
@@ -29,6 +26,9 @@ public class NotizController {
     public String index(Model model) {
 
         model.addAttribute("alleNotizen", notizService.alleNotizen());
+        model.addAttribute("dringendeNotizen", notizService.notizenSortiertNachDringlichkeit());
+        model.addAttribute("kommendeNotizen", notizService.notizenNachZeit());
+        model.addAttribute("vergangeneNotizen", notizService.vergangeneNotizenNachZeit());
 
         return "index";
     }
