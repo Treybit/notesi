@@ -1,4 +1,4 @@
-package de.notesi.web;
+package de.notesi.domain;
 
 public enum Dringlichkeit {
 

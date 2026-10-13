@@ -1,5 +1,7 @@
 package de.notesi.web;
 
+import de.notesi.domain.Dringlichkeit;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
