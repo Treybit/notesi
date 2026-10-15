@@ -28,7 +28,6 @@ public class NotizController {
     public String index(Model model) {
 
         model.addAttribute("alleNotizen", notizService.alleNotizen());
-        System.out.println(notizService.alleNotizen().get(0).getDatum());
         model.addAttribute("dringendeNotizen", notizService.notizenSortiertNachDringlichkeit());
         model.addAttribute("kommendeNotizen", notizService.notizenNachZeit());
         model.addAttribute("vergangeneNotizen", notizService.vergangeneNotizenNachZeit());
