@@ -33,7 +33,7 @@ public class NotizRepoImplFake implements NotizRepo {
     }
 
     @Override
-    public void bearbeiteNotiz(Notiz notiz) {
+    public void bearbeiteNotiz(Notiz alteNotiz) {
 
         //Fehlt noch
         throw new UnsupportedOperationException(

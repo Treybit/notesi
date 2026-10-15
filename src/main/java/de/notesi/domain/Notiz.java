@@ -1,6 +1,7 @@
 package de.notesi.domain;
 
 import org.springframework.cglib.core.Local;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -51,6 +52,7 @@ public class Notiz {
         return url;
     }
 
+    @DateTimeFormat(pattern="dd.MM.yyyy")
     public LocalDate getDatum() {
         return datum;
     }

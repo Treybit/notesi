@@ -2,6 +2,7 @@ package de.notesi.web;
 
 import de.notesi.domain.Dringlichkeit;
 import de.notesi.domain.Notiz;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,6 +16,7 @@ public class NotizForm {
 
     private String url;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate datum;
 
     private LocalTime uhrzeit;
@@ -70,11 +72,27 @@ public class NotizForm {
     }
 
     //Gehört diese Methode hier rein?????
+    //NotizForm zu Notiz
     public Notiz convertToNotiz() {
         //URL ist einfach leer, datum ist NULL und uhrzeit ist NULL
         //Dieses SOUT muss noch weg!!!
         System.out.println(url + datum + uhrzeit);
         Notiz notiz = new Notiz(titel, beschreibung, url, datum, uhrzeit, dringlichkeit);
         return notiz;
+    }
+
+    //Notiz zu NotizForm
+    static public NotizForm convertToNotizForm(Notiz notiz){
+
+        NotizForm notizForm = new NotizForm();
+
+        notizForm.titel = notiz.getTitel();
+        notizForm.beschreibung = notiz.getBeschreibung();
+        notizForm.url = notiz.getUrl();
+        notizForm.datum = notiz.getDatum();
+        notizForm.uhrzeit = notiz.getUhrzeit();
+        notizForm.dringlichkeit = notiz.getDringlichkeit();
+
+        return notizForm;
     }
 }

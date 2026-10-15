@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.*;
 
+import static de.notesi.web.NotizForm.convertToNotizForm;
+
 @Controller
 public class NotizController {
 
@@ -85,4 +87,24 @@ public class NotizController {
         return "redirect:/";
     }
 
+    //Vorhandene Notiz bearbeiten
+    @GetMapping("/notiz/bearbeiten/{id}")
+    public String bearbeiteNotiz(@PathVariable UUID id, Model model){
+
+        //Suche erstmal die Notiz, die bearbeitet werden soll
+        Optional<Notiz> optnotiz = notizService.findeNotizMitId(id);
+        if(optnotiz.isEmpty()){
+            return "notiznichtvorhanden";
+        }
+        Notiz notiz = optnotiz.get();
+
+        NotizForm notizForm = convertToNotizForm(notiz);
+
+        model.addAttribute("notizForm", notizForm);
+        //Datum wird nicht übernommen in das Formular!
+
+        System.out.println(notizForm.getDatum());
+
+        return "notizbearbeiten";
+    }
 }
