@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public class Notiz {
 
-    private final UUID id;
+    private UUID id;
 
     private String titel;
     private String beschreibung;
@@ -36,6 +36,11 @@ public class Notiz {
         this.dringlichkeit = dringlichkeit;
     }
 
+    //Gute Idee?? Nochmal nach besseren Lösungen prüfen.
+    public void setId(UUID id){
+        this.id = id;
+    }
+
     public UUID getId() {
         return id;
     }
@@ -52,7 +57,6 @@ public class Notiz {
         return url;
     }
 
-    @DateTimeFormat(pattern="dd.MM.yyyy")
     public LocalDate getDatum() {
         return datum;
     }

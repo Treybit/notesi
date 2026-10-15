@@ -38,7 +38,9 @@ public class NotizService {
 
     // Eine bestehende Notiz bearbeiten
     public void bearbeiteNotiz(Notiz notiz) {
-        notizRepo.bearbeiteNotiz(notiz);
+        throw new UnsupportedOperationException(
+                "Die Funktion 'bearbeiteNotiz' ist noch nicht implementiert."
+        );
     }
 
     // Eine Notiz löschen

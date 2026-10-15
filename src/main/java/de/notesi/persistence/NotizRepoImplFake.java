@@ -33,9 +33,8 @@ public class NotizRepoImplFake implements NotizRepo {
     }
 
     @Override
-    public void bearbeiteNotiz(Notiz alteNotiz) {
+    public void bearbeiteNotiz(Notiz notiz) {
 
-        //Fehlt noch
         throw new UnsupportedOperationException(
                 "Die Funktion 'bearbeiteNotiz' ist noch nicht implementiert."
         );

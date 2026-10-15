@@ -28,6 +28,7 @@ public class NotizController {
     public String index(Model model) {
 
         model.addAttribute("alleNotizen", notizService.alleNotizen());
+        System.out.println(notizService.alleNotizen().get(0).getDatum());
         model.addAttribute("dringendeNotizen", notizService.notizenSortiertNachDringlichkeit());
         model.addAttribute("kommendeNotizen", notizService.notizenNachZeit());
         model.addAttribute("vergangeneNotizen", notizService.vergangeneNotizenNachZeit());
@@ -106,5 +107,18 @@ public class NotizController {
         System.out.println(notizForm.getDatum());
 
         return "notizbearbeiten";
+    }
+
+    @PostMapping("/notiz/bearbeiten/{id}")
+    public String bearbeiteNotiz(@PathVariable UUID id, NotizForm notizForm){
+
+        UUID tmpId = id;
+
+        notizService.loescheNotizNachId(id);
+        Notiz notiz = notizForm.convertToNotiz();
+        notiz.setId(id);
+        notizService.erstelleNotiz(notiz);
+
+        return "redirect:/";
     }
 }

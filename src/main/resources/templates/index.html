@@ -59,9 +59,7 @@
                                     </a>
                                 </td>
 
-                                <td th:text="${notiz.datum != null
-                            ? #temporals.format(notiz.datum, 'dd.MM.yyyy')
-                            : '-'}">
+                                <td th:text="${notiz.datum}">
                                     Datum
                                 </td>
                             </tr>
@@ -97,13 +95,11 @@
                                 </td>
 
                                 <td>
-                            <span th:if="${notiz.datum != null}"
-                                  th:text="${#temporals.format(notiz.datum, 'dd.MM.yyyy')}">
+                            <span th:text="${notiz.datum}">
                                 Datum
                             </span>
 
-                                    <span th:if="${notiz.uhrzeit != null}"
-                                          th:text="${#temporals.format(notiz.uhrzeit, 'HH:mm')}">
+                                    <span th:text="${notiz.uhrzeit}">
                                 Uhrzeit
                             </span>
                                 </td>
@@ -139,7 +135,7 @@
                                     </a>
                                 </td>
 
-                                <td th:text="${#temporals.format(notiz.datum, 'dd.MM.yyyy')}">
+                                <td th:text="${notiz.datum}">
                                     Datum
                                 </td>
                             </tr>
@@ -177,7 +173,7 @@
                 <br>
 
                 <!-- URL -->
-                <span th:if="${eintrag.url != null and !eintrag.url.isEmpty()}">
+                <span th:if="${eintrag.url}">
                 URL:
                 <a th:href="${eintrag.url}"
                    th:text="${eintrag.url}"
@@ -187,12 +183,12 @@
                 </a>
             </span>
 
-                <br th:if="${eintrag.url != null and !eintrag.url.isEmpty()}">
+                <br th:if="${eintrag.url}">
 
                 <!-- Datum -->
                 <span>
                 Datum:
-                <span th:text="${eintrag.datum != null ? #temporals.format(eintrag.datum, 'dd.MM.yyyy') : 'Kein Datum'}">
+                <span th:text="${eintrag.datum}">
                     13.10.2026
                 </span>
             </span>
@@ -202,7 +198,7 @@
                 <!-- Uhrzeit -->
                 <span>
                 Uhrzeit:
-                <span th:text="${eintrag.uhrzeit != null ? #temporals.format(eintrag.uhrzeit, 'HH:mm') : 'Keine Uhrzeit'}">
+                <span th:text="${eintrag.uhrzeit}">
                     14:30
                 </span>
             </span>
